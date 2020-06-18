@@ -1,0 +1,2 @@
+git remote add origin git@github.com:980406hww/mybatis1.git
+git push -u origin master
