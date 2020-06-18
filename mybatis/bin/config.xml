@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="db.properties"/><!-- 引用数据库信息 -->
+	<!--  <settings>
+		<setting name="cachEnabled" value="false"/>
+		<setting name="lazyLoadingEnabled" value="false"/>
+	</settings>设置全局参数
+	-->
+	<!-- 设置单个/多个别名 -->
+	<typeAliases>
+		<!-- 单个   忽略大小写-->
+		<!-- <typeAlias type="org.lanqiao.entiy.Person" alias="person"/>-->
+		<!-- 批量定义别名  别名就是类名,自动将包里面的所以类定义别名 -->
+		<package name="org.hww.entiy"/>
+	</typeAliases>
+	
+	
+	<!-- 通过environments的default值和environment的ID来指定Mybatis运行时的数据环境 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="POOLED"><!-- POOLED使用数据库连接池 -->
+			<!-- 配置数据库信息 -->
+			<property name="driver" value="${driver}"/>
+			<property name="url" value="${url}"/>
+			<property name="username" value="${username}"/>
+			<property name="password" value="${password}"/>
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+	<!-- 加载映射文件 -->
+		<mapper resource="org/hww/mapper/personMapper.xml"/>
+	</mappers>
+</configuration>
